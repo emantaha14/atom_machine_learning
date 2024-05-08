@@ -25,6 +25,7 @@ class GetStartedButton extends StatelessWidget {
       child: Text(text,
           style: const TextStyle(
             color: ColorManger.white,
+            fontSize: 20
           )),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:atom/core/theming/theme_manager.dart';
+import 'package:atom/feature/login/ui/screen/login_screen.dart';
+import 'package:atom/feature/onboarding/ui/screen/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: getApplicationTheme(),
-        home: const SignupScreen(),
+        home: const OnboardingScreen(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

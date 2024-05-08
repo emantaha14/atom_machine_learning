@@ -7,14 +7,14 @@ import '../../../../core/helper/lists_management.dart';
 import '../../../../core/theming/colors.dart';
 import '../widget/drop_down_text_field_default.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late SingleValueDropDownController _cnt;
   late MultiValueDropDownController _cntMulti;

@@ -71,7 +71,7 @@ class OnboardingScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.pushNamed(Routes.homeScreen);
+          context.pushNamed(Routes.login);
         },
         child: const Icon(
           Icons.arrow_circle_right_sharp,
