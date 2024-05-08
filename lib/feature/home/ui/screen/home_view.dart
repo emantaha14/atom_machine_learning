@@ -1,12 +1,11 @@
-import 'package:atom/presentaion_layer/resources/color_manager.dart';
-import 'package:atom/presentaion_layer/resources/strings_manager.dart';
-import 'package:atom/presentaion_layer/resources/values_manager.dart';
-import 'package:atom/presentaion_layer/widgets/text_field_default.dart';
+import 'package:atom/core/helper/app_string.dart';
+import 'package:atom/feature/home/ui/widget/text_field_default.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/drop_down_text_field_default.dart';
-import '../../resources/lists_management.dart';
+import '../../../../core/helper/lists_management.dart';
+import '../../../../core/theming/colors.dart';
+import '../widget/drop_down_text_field_default.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -30,8 +29,10 @@ class _HomeViewState extends State<HomeView> {
   final TextEditingController _physicalHealth = TextEditingController();
   final TextEditingController _mentalHealth = TextEditingController();
   final TextEditingController _hoursOfSleepController = TextEditingController();
-  final TextEditingController _walkingOrClimbingController = TextEditingController();
-  final TextEditingController _smokingStatusController = TextEditingController();
+  final TextEditingController _walkingOrClimbingController =
+      TextEditingController();
+  final TextEditingController _smokingStatusController =
+      TextEditingController();
   final TextEditingController _alcoholController = TextEditingController();
   final TextEditingController _kidneyStonesController = TextEditingController();
   final TextEditingController _asthmaController = TextEditingController();
@@ -66,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
         child: Form(
           key: _formKey,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -112,13 +113,15 @@ class _HomeViewState extends State<HomeView> {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 DefaultTextField(
-                    controller: _physicalHealth, hintText: AppStrings.physicalHealthHint),
+                    controller: _physicalHealth,
+                    hintText: AppStrings.physicalHealthHint),
                 Text(
                   AppStrings.mentalHealth,
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
                 DefaultTextField(
-                    controller: _mentalHealth, hintText: AppStrings.mentalHealthHint),
+                    controller: _mentalHealth,
+                    hintText: AppStrings.mentalHealthHint),
                 Text(
                   AppStrings.howManyHoursOfSleep,
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -184,8 +187,11 @@ class _HomeViewState extends State<HomeView> {
         onPressed: () {
           setState(() {});
         },
-        label:  Text(AppStrings.predict, style: TextStyle(color: ColorManager.white),),
-        backgroundColor: ColorManager.orange,
+        label: Text(
+          AppStrings.predict,
+          style: TextStyle(color: ColorManger.white),
+        ),
+        backgroundColor: ColorManger.orange,
       ),
     );
   }

@@ -1,5 +1,4 @@
-import 'package:atom/presentaion_layer/resources/strings_manager.dart';
-import 'package:atom/presentaion_layer/resources/values_manager.dart';
+import 'package:atom/core/helper/app_string.dart';
 import 'package:flutter/material.dart';
 
 class DefaultTextField extends StatefulWidget {
@@ -20,13 +19,12 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
       children: [
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(
-                top: AppPadding.p20, bottom: AppPadding.p20),
+            padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: TextFormField(
               controller: widget.controller,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: AppPadding.p23, horizontal: AppPadding.p15),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 23, horizontal: 15),
                 // Padding inside the text field
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none,
@@ -57,7 +55,6 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                     (currentValue + 1).toString(); // Increment and update text
               });
             },
-
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.resolveWith<Color>(
                   (Set<MaterialState> states) {
@@ -74,11 +71,11 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                 return Colors.black; // Default text/icon color
               }),
               elevation: MaterialStateProperty.all(0),
-               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                 const RoundedRectangleBorder(
-                   borderRadius: BorderRadius.zero,  // Makes the corners sharp
-                 ),
-               ),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.zero, // Makes the corners sharp
+                ),
+              ),
             ),
             child: const Icon(Icons.add),
           ),
@@ -114,14 +111,14 @@ class _DefaultTextFieldState extends State<DefaultTextField> {
                 return Colors.black; // Default text/icon color
               }),
               elevation: MaterialStateProperty.all(0),
-              shape : MaterialStateProperty.all<RoundedRectangleBorder>(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.zero,  // Makes the corners sharp
+                  borderRadius: BorderRadius.zero, // Makes the corners sharp
                 ),
               ),
             ),
             child: const Padding(
-              padding: EdgeInsets.only(bottom: AppPadding.p15),
+              padding: EdgeInsets.only(bottom: 15),
               child: Icon(Icons.minimize),
             ),
           ),
@@ -141,12 +138,11 @@ class DefaultTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          const EdgeInsets.only(top: AppPadding.p20, bottom: AppPadding.p20),
+      padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: TextFormField(
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.symmetric(
-              vertical: AppPadding.p23, horizontal: AppPadding.p15),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 23, horizontal: 15),
           // Padding inside the text field
           border: OutlineInputBorder(
             borderSide: BorderSide.none,

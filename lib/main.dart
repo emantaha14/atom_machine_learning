@@ -1,17 +1,19 @@
-import 'package:atom/presentaion_layer/home/home_view/home_view.dart';
-import 'package:atom/presentaion_layer/onboarding/onboarding_view/onboarding.dart';
-import 'package:atom/presentaion_layer/resources/routes_manager.dart';
-import 'package:atom/presentaion_layer/resources/theme_manager.dart';
+import 'package:atom/core/theming/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/routing/app_router.dart';
+import 'feature/sign_up/ui/screen/sign_up_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(
+    appRouter: AppRouter(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.appRouter}) : super(key: key);
+  final AppRouter appRouter;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +23,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme:getApplicationTheme() ,
-        //   ThemeData(
-        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        //   useMaterial3: true,
-        // ),
-        home: const OnboardingScreen(),
-        onGenerateRoute: RouteGenerator.getRoute,
+        theme: getApplicationTheme(),
+        home: const SignupScreen(),
+        onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }
 }
-
