@@ -1,4 +1,5 @@
 
+import 'package:atom/core/helper/app_constants.dart';
 import 'package:dio/dio.dart';
 
 class ApiServices {
@@ -10,7 +11,7 @@ class ApiServices {
    void init() {
     dio = Dio(
       BaseOptions(
-          baseUrl:'',
+          baseUrl:AppConstants.baseUrl,
           receiveDataWhenStatusError: true,
           headers: {'Content-Type': 'application/json'}),
     );
@@ -27,11 +28,12 @@ class ApiServices {
   }
   ////////////////////////////////////////////////////////
 
-  Future<Response> postData({
+   Future<Response> postData({
     required String urll,
     required Map<String, dynamic> data,
     Map<String, dynamic>? queries,
   }) async {
+     print('Request URL: ${dio.options.baseUrl}$urll');
     return await dio.post(urll, data: data);
   }
 

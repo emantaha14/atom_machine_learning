@@ -1,5 +1,3 @@
-
-
 import 'package:atom/core/routing/routes.dart';
 import 'package:atom/feature/login/ui/screen/login_screen.dart';
 import 'package:atom/feature/sign_up/ui/screen/sign_up_screen.dart';
@@ -23,13 +21,12 @@ class AppRouter {
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) =>  LoginScreen(),
         );
       case Routes.signup:
         return MaterialPageRoute(
           builder: (_) => const SignupScreen(),
         );
-
 
       default:
         return MaterialPageRoute(
