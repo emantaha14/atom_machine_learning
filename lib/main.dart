@@ -1,13 +1,16 @@
 import 'package:atom/core/theming/theme_manager.dart';
 import 'package:atom/feature/login/ui/screen/login_screen.dart';
-import 'package:atom/feature/onboarding/ui/screen/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/helper/bloc_observation.dart';
 import 'core/routing/app_router.dart';
-import 'feature/sign_up/ui/screen/sign_up_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+
   runApp(MyApp(
     appRouter: AppRouter(),
   ));
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: getApplicationTheme(),
-        home: const OnboardingScreen(),
+        home: const LoginScreen(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

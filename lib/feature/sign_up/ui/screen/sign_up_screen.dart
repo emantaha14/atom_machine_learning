@@ -3,7 +3,6 @@ import 'package:atom/core/theming/colors.dart';
 import 'package:atom/core/theming/styles_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/routing/routes.dart';
 import '../widget/sign_up_form.dart';
 
 class SignupScreen extends StatelessWidget {

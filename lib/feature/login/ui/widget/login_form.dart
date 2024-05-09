@@ -1,6 +1,7 @@
 import 'package:atom/core/helper/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../core/helper/app_regx.dart';
 import '../../../../core/routing/routes.dart';
@@ -25,17 +26,27 @@ class LoginForm extends StatelessWidget {
         create: (context) => LoginCubit(_loginRepo),
         child: BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
           if (state.status == LoginStatus.success) {
+            Fluttertoast.showToast(
+                msg: 'Login in Successfully',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: const Color.fromARGB(255, 1, 85, 18),
+                textColor: Colors.white,
+                fontSize: 16.0);
             print(state.status);
             context.pushReplacementNamed(Routes.homeScreen);
           } else if (state.status == LoginStatus.failure) {
+            Fluttertoast.showToast(
+                msg: state.errorMessage!,
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: const Color.fromARGB(255, 85, 1, 1),
+                textColor: Colors.white,
+                fontSize: 16.0);
             print(state.status);
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage ?? 'Login failed.'),
-                ),
-              );
-            });
+            WidgetsBinding.instance.addPostFrameCallback((_) {});
           }
         }, builder: (context, state) {
           print(state.status);

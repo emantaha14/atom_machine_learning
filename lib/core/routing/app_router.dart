@@ -21,7 +21,7 @@ class AppRouter {
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (_) =>  LoginScreen(),
+          builder: (_) => const LoginScreen(),
         );
       case Routes.signup:
         return MaterialPageRoute(

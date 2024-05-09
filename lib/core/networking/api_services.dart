@@ -1,22 +1,32 @@
-
-import 'package:atom/core/helper/app_constants.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import '../helper/app_constants.dart';
 
 class ApiServices {
   Dio dio;
 
   ApiServices({required this.dio});
 
-
-   void init() {
+  void init() {
     dio = Dio(
       BaseOptions(
-          baseUrl:AppConstants.baseUrl,
+          baseUrl: AppConstants.baseUrl,
           receiveDataWhenStatusError: true,
           headers: {'Content-Type': 'application/json'}),
     );
+    addDioInterceptor();
   }
 
+  void addDioInterceptor() {
+    dio.interceptors.add(
+      PrettyDioLogger(
+        requestBody: true,
+        requestHeader: true,
+        responseHeader: true,
+      ),
+    );
+  }
 
 //////////////////////////////////////////////////////////
   Future<Response> getData({
@@ -28,12 +38,12 @@ class ApiServices {
   }
   ////////////////////////////////////////////////////////
 
-   Future<Response> postData({
+  Future<Response> postData({
     required String urll,
     required Map<String, dynamic> data,
     Map<String, dynamic>? queries,
   }) async {
-     print('Request URL: ${dio.options.baseUrl}$urll');
+    print('Request URL: ${dio.options.baseUrl}$urll');
     return await dio.post(urll, data: data);
   }
 
