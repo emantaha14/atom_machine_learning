@@ -2,7 +2,6 @@ import 'package:atom/core/helper/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../../../../core/helper/app_regx.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/widget/app_text_field.dart';
@@ -12,7 +11,7 @@ import '../../data/network.dart';
 import '../../logic/login_cubit.dart';
 
 class LoginForm extends StatelessWidget {
-  final LoginRepo _loginRepo = LoginRepo(AppServiceClient());
+  final LoginRepo _loginRepo = LoginRepo(LoginService());
 
   LoginForm({super.key});
 
@@ -93,6 +92,7 @@ class LoginForm extends StatelessWidget {
                         context.read<LoginCubit>().userLogin(
                             email: emailController.text,
                             password: passwordController.text);
+                        print(state.status);
                       },
                       text: 'Login'),
                 ),

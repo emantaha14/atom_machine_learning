@@ -5,11 +5,11 @@ import 'package:dio/dio.dart';
 
 import '../../../core/networking/api_services.dart';
 
-class AppServiceClient {
+class LoginService {
   final ApiServices _apiServices = ApiServices(dio: Dio())..init();
 
   Future<LoginModel> login(String email, String password) async {
-      String url = 'login';
+      String url = 'users/login';
       final Response response = await _apiServices.postData(urll: url, data: {
         "email": email,
         "password": password,

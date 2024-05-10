@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
   void userLogin({required String email, required String password}) async {
     emit( const LoginState(status: LoginStatus.loading));
     try {
-      await _loginRepo.login(email, password);
+       await _loginRepo.login(email, password);
       emit(const LoginState(status: LoginStatus.success));
     } catch (e) {
       emit(const LoginState(status: LoginStatus.failure, errorMessage: 'Invalid email or password.'));

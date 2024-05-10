@@ -1,4 +1,7 @@
 import 'package:atom/core/helper/app_string.dart';
+import 'package:atom/feature/home/data/repo/backmodel_repo.dart';
+import 'package:atom/feature/home/data/repo/model_info_request.dart';
+import 'package:atom/feature/home/data/repo/network.dart';
 import 'package:atom/feature/home/ui/widget/text_field_default.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _cntMulti.dispose();
     super.dispose();
   }
+
+  BackModelRepo backModelRepo = BackModelRepo(BackModelService());
 
   @override
   Widget build(BuildContext context) {
@@ -185,7 +190,26 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          setState(() {});
+          backModelRepo.modelInformation(
+              ModelInfRequest(
+                  "Male",
+                  "25-29",
+                  21.62,
+                  "Excellent",
+                  "No",
+                  1.0,
+                  6.0,
+                  7.0,
+                  "No",
+                  "Never smoked",
+                  "Yes",
+                  "No",
+                  "No",
+                  "No",
+                  "No",
+                  "No",
+                  "662b9a910e37e94a30bbc664",
+                  50));
         },
         label: Text(
           AppStrings.predict,
