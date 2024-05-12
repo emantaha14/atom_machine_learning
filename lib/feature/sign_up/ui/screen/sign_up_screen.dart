@@ -3,6 +3,7 @@ import 'package:atom/core/theming/colors.dart';
 import 'package:atom/core/theming/styles_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/routing/routes.dart';
 import '../widget/sign_up_form.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -40,13 +41,13 @@ class SignupScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'don\'t have an count?',
+                          'don\'t have an account?',
                           style: getRegularStyle(
                               color: ColorManger.black, fontSize: 17),
                         ),
                         TextButton(
                           onPressed: () {
-                            context.pop();
+                            context.pushNamed(Routes.login);
                           },
                           child: Text(
                             'Login',

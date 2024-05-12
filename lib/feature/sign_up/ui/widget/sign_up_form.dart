@@ -64,6 +64,7 @@ class SignUpForm extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
+                  keyboardType: TextInputType.phone,
                   hintText: 'Phone number',
                   validator: (value) {
                     if (value == null ||
