@@ -13,8 +13,7 @@ class AppStrings {
       'On average, how many hours of  sleep do you get in a 24-hour period?';
   static String walkingOrClimbing =
       'Do you have serious difficulty walking or climbing stairs?';
-  static String smokerStatus =
-      'What is your Smoking Status?';
+  static String smokerStatus = 'What is your Smoking Status?';
   static String alcohol =
       'Are you an adults who have had at least on drink of alcohol in the past 30 days';
   static String kidneyDisease =
@@ -34,4 +33,5 @@ class AppStrings {
   static String selectItem = 'select item';
   static String zero = '0';
   static String noRouteFound = 'No Route Found';
+  static String stroke = 'Do you have stroke disease';
 }

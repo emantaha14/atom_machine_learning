@@ -1,24 +1,23 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../helper/app_constants.dart';
-
 class ApiServices {
-  Dio dio;
+  static Dio dio = Dio();
 
-  ApiServices({required this.dio});
-
-  void init() {
+  static void init() {
     dio = Dio(
       BaseOptions(
-          baseUrl: AppConstants.baseUrl,
+          baseUrl: '',
           receiveDataWhenStatusError: true,
+          receiveTimeout: const Duration(minutes: 3),
+          connectTimeout: const Duration(minutes: 3),
+          sendTimeout: const Duration(minutes: 3),
           headers: {'Content-Type': 'application/json'}),
     );
     addDioInterceptor();
   }
 
-  void addDioInterceptor() {
+  static void addDioInterceptor() {
     dio.interceptors.add(
       PrettyDioLogger(
         requestBody: true,
@@ -29,7 +28,7 @@ class ApiServices {
   }
 
 //////////////////////////////////////////////////////////
-  Future<Response> getData({
+  static Future<Response> getData({
     required String urll,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
@@ -38,16 +37,17 @@ class ApiServices {
   }
   ////////////////////////////////////////////////////////
 
-  Future<Response> postData({
+  static Future<Response> postData({
     required String urll,
     required Map<String, dynamic> data,
     Map<String, dynamic>? queries,
   }) async {
     print('Request URL: ${dio.options.baseUrl}$urll');
+
     return await dio.post(urll, data: data);
   }
 
-  Future<Response> patchData({
+  static Future<Response> patchData({
     required String urll,
     required Map<String, dynamic> data,
     Map<String, dynamic>? queries,
@@ -58,7 +58,7 @@ class ApiServices {
     );
   }
 
-  Future<Response> deleteData({
+  static Future<Response> deleteData({
     required String urll,
     Map<String, dynamic>? data,
     Map<String, dynamic>? queries,

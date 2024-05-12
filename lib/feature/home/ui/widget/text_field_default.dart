@@ -140,6 +140,7 @@ class DefaultTextFormField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: TextFormField(
+        controller: textEditingController,
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(vertical: 23, horizontal: 15),

@@ -67,4 +67,9 @@ class ListManager {
     DropDownValueModel(name: 'Yes (during pregnancy)', value: "value38"),
     DropDownValueModel(name: 'Yes', value: "value39"),
   ];
+
+  static List<DropDownValueModel> stroke = const [
+    DropDownValueModel(name: 'Yes', value: "value40"),
+    DropDownValueModel(name: 'No', value: "value41"),
+  ];
 }

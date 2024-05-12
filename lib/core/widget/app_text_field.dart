@@ -19,6 +19,7 @@ class AppTextFormField extends StatelessWidget {
     this.focusedErrorBorder,
     this.errorBorder,
     this.onFieldSubmitted,
+    this.keyboardType,
   });
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
@@ -32,10 +33,12 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String?) validator;
   final void Function(String)? onFieldSubmitted;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
       onFieldSubmitted: onFieldSubmitted,
       controller: controller,
       decoration: InputDecoration(

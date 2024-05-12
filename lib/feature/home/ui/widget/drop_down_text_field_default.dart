@@ -7,7 +7,7 @@ class DropDownTextFieldDefault extends StatelessWidget {
   final FocusNode searchFocusNode = FocusNode();
   final FocusNode textFieldFocusNode = FocusNode();
   final List<DropDownValueModel> dropDownValueModelList;
-  final TextEditingController textEditingController;
+  final SingleValueDropDownController textEditingController;
   DropDownTextFieldDefault(
       {super.key,
       required this.dropDownValueModelList,
@@ -17,6 +17,7 @@ class DropDownTextFieldDefault extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: DropDownTextField(
+        controller: textEditingController,
         dropDownIconProperty: IconProperty(
           color: Colors.orange,
         ),

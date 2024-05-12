@@ -5,11 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/helper/bloc_observation.dart';
+import 'core/networking/api_services.dart';
 import 'core/routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  ApiServices.init();
 
   runApp(MyApp(
     appRouter: AppRouter(),
