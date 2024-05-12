@@ -1,6 +1,10 @@
 import 'package:atom/core/helper/app_string.dart';
 import 'package:atom/core/helper/extension.dart';
 import 'package:atom/core/theming/styles_manager.dart';
+import 'package:atom/feature/history/ui/history_screen.dart';
+import 'package:atom/feature/home/data/repo/backmodel_repo.dart';
+import 'package:atom/feature/home/data/repo/model_info_request.dart';
+import 'package:atom/feature/home/data/repo/network.dart';
 import 'package:atom/feature/home/data/repo/predict_disease_repo.dart';
 import 'package:atom/feature/home/logic/predict_disease_state.dart';
 import 'package:atom/feature/home/ui/widget/text_field_default.dart';
@@ -70,13 +74,92 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  final BackModelRepo _backModelRepo = BackModelRepo(BackModelService());
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PredictDiseaseCubit(PredictDiseaseRepo()),
+    return BlocProvider<PredictDiseaseCubit>(
+          create: (BuildContext context) =>
+              PredictDiseaseCubit(PredictDiseaseRepo()),
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Row(
+                      children: [
+                        Image.asset(
+                          'assets/image/doc.png',
+                          width: 100,
+                          height: 200,
+                        ),
+                        SizedBox(
+                          width: 200,
+                          child: Text(
+                            '${(22 * 10).toStringAsFixed(2)}% you have heart disease',
+                            style: getMediumStyle(
+                                color: Colors.black.withOpacity(0.7),
+                                fontSize: 23),
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          context
+                              .read<PredictDiseaseCubit>()
+                              .userModelInformation(
+                                  modelInfRequest: ModelInfRequest(
+                                _sexController.dropDownValue!.name,
+                                _ageController.dropDownValue!.name,
+                                double.parse(_bmiController.text),
+                                _generaHealthController.dropDownValue!.name,
+                                _pathMonthController.dropDownValue!.name,
+                                double.parse(_physicalHealth.text),
+                                double.parse(_mentalHealth.text),
+                                double.parse(_hoursOfSleepController.text),
+                                _walkingOrClimbingController
+                                    .dropDownValue!.name,
+                                _smokingStatusController.dropDownValue!.name,
+                                _alcoholController.dropDownValue!.name,
+                                _kidneyStonesController.dropDownValue!.name,
+                                _asthmaController.dropDownValue!.name,
+                                _skinCancerController.dropDownValue!.name,
+                                _strokeController.dropDownValue!.name,
+                                _diabetesController.dropDownValue!.name,
+                                "662b9a910237e94a30bbc669",
+                                double.parse("32"),
+                              ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HistoryScreen(),
+                              ));
+                        },
+                        child: Text(
+                          'Got it',
+                          style: getBoldStyle(color: ColorManger.orange),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          context.pop();
+                        },
+                        child: Text(
+                          'History',
+                          style: getBoldStyle(color: ColorManger.orange),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              icon: Icon(Icons.add)),
           backgroundColor: Colors.grey[100],
           elevation: 0,
           title: Text(AppStrings.featureSelection,
@@ -238,10 +321,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   actions: [
                     TextButton(
                       onPressed: () {
+                        print('bbbb');
                         context.pop();
                       },
                       child: Text(
                         'Got it',
+                        style: getBoldStyle(color: ColorManger.orange),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'History',
                         style: getBoldStyle(color: ColorManger.orange),
                       ),
                     ),

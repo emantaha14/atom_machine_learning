@@ -8,7 +8,7 @@ class BackModelRepo {
 
   BackModelRepo(this._backModelService);
 
-  Future<BackModel> modelInformation(ModelInfRequest modelInfRequest) async {
+  Future<BackModelResponse> modelInformation(ModelInfRequest modelInfRequest) async {
     final modelInformation = await _backModelService.modelInformation(modelInfRequest);
     return modelInformation;
   }

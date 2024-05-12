@@ -1,12 +1,21 @@
 part of 'model_info_back_cubit.dart';
 
 
-enum BackModelStatus { initial, loading, success, failure }
+// abstract class BackModelInfoState {}
+//
+// class BackModelInfoInitialState extends BackModelInfoState {}
+//
+// class BackModelInfoLoadingState extends BackModelInfoState {}
+//
+// class BackModelInfoSuccessState extends BackModelInfoState {
+//   final BackModelResponse backModelResponse;
+//
+//   BackModelInfoSuccessState({required this.backModelResponse});
+// }
+//
+// class BackModelInfoFailureState extends BackModelInfoState {
+//   final String error;
+//
+//   BackModelInfoFailureState({required this.error});
+// }
 
-@immutable
-class BackModelState {
-  final BackModelStatus status;
-  final String? errorMessage;
-
-  const BackModelState({required this.status, this.errorMessage});
-}

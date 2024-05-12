@@ -1,12 +1,16 @@
 import 'dart:developer';
 
+import 'package:atom/feature/home/data/repo/backmodel_repo.dart';
+import 'package:atom/feature/home/data/repo/network.dart';
 import 'package:atom/feature/home/data/repo/predict_disease_repo.dart';
 import 'package:bloc/bloc.dart';
 
+import '../data/repo/model_info_request.dart';
 import 'predict_disease_state.dart';
 
 class PredictDiseaseCubit extends Cubit<PredictDiseaseState> {
   PredictDiseaseCubit(this.predictDiseaseRepo) : super(PredictDiseaseInitial());
+  final BackModelRepo _backModelRepo = BackModelRepo(BackModelService());
   final PredictDiseaseRepo predictDiseaseRepo;
 
   void getPredictDisease(
@@ -52,4 +56,15 @@ class PredictDiseaseCubit extends Cubit<PredictDiseaseState> {
       emit(PredictDiseaseFailure(error: error));
     });
   }
+
+ void userModelInformation({required ModelInfRequest modelInfRequest}) async {
+  emit(PredictDiseaseLoading());
+  try {
+    await _backModelRepo.modelInformation(modelInfRequest).then((value) {
+      emit(BackModelInfoSuccessState(backModelResponse: value));
+    });
+  } catch (error) {
+    emit(BackModelInfoFailureState(error: error.toString()));
+  }
+}
 }

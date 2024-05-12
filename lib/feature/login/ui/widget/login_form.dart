@@ -92,7 +92,6 @@ class LoginForm extends StatelessWidget {
                         context.read<LoginCubit>().userLogin(
                             email: emailController.text,
                             password: passwordController.text);
-                        print(state.status);
                       },
                       text: 'Login'),
                 ),

@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 import '../../../core/networking/api_services.dart';
 
-class AppServiceClient {
+class LoginService {
   Future<LoginModel> login(String email, String password) async {
     String url = 'login';
     final Response response =

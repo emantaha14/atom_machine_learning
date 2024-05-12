@@ -5,11 +5,11 @@ import '../../../../core/networking/api_services.dart';
 import 'model_info_request.dart';
 
 class BackModelService {
-  final ApiServices _apiServices = ApiServices(dio: Dio())..init();
 
-  Future<BackModel> modelInformation(ModelInfRequest modelInfRequest) async {
+
+  Future<BackModelResponse> modelInformation(ModelInfRequest modelInfRequest) async {
     String url = 'examines';
-    final Response response = await _apiServices.postData(urll: url, data: {
+    final Response response = await ApiServices.postData(urll: url, data: {
       "Sex": modelInfRequest.Sex,
       "AgeCategory": modelInfRequest.AgeCategory,
       "BMI": modelInfRequest.BMI,
@@ -32,7 +32,7 @@ class BackModelService {
 
     if (response.statusCode == 200 || response.statusCode ==201) {
       print(response.data);
-      return BackModel.fromJson(response.data);
+      return BackModelResponse.fromJson(response.data);
     } else {
       throw Exception(
           'Failed to login: Server returned ${response.statusCode}');

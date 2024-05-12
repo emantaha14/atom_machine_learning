@@ -34,4 +34,5 @@ class AppStrings {
   static String zero = '0';
   static String noRouteFound = 'No Route Found';
   static String stroke = 'Do you have stroke disease';
+  static String history = 'History of Patient';
 }
